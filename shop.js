@@ -78,7 +78,7 @@ function validate(form) {
   const email = form.email.value.trim();
   const address = form.address.value.trim();
   if (name.length < 2) errors.name = 'Enter your full name';
-  if (!email.includes('@')) errors.email = 'Enter a valid email address';   
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Enter a valid email address';
   if (!address) errors.address = 'Enter a delivery address';
   return errors;
 }
