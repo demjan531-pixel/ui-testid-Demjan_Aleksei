@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-
+import { ShopPage } from './shop.page';
 test('UI-01 products page shows 6 products', async ({ page }) => {
 await page.goto('/');
 await expect(page.getByRole('heading', { name: 'Products' })).toBeVisible();
@@ -36,6 +36,7 @@ await expect(page.getByTestId('cart-total')).toHaveText('39.00 €');
 
 test('UI-06 adding the same product twice gives qty 2 and total 78.00 €', async ({ page }) => {
   const shop = new ShopPage(page);
+  await shop.open(); 
   await shop.add('USB-C Hub');
   await shop.add('USB-C Hub');
   await shop.openCart();
@@ -75,6 +76,7 @@ await expect(page.locator('#email-error')).toContainText('Enter a valid email ad
 
 test('UI-10 valid order shows confirmation and empties the cart', async ({ page }) => {
   const shop = new ShopPage(page);
+  await shop.open(); 
   await shop.add('Wireless Mouse');
   await shop.openCart();
   await shop.checkout('Mari Maasikas', 'mari@example.com', 'Pikk 1, Tallinn');
