@@ -29,7 +29,7 @@ const money = (n) => n.toFixed(2) + ' €';
 
 function renderProducts() {
   const q = $('#search').value;
-  const visible = PRODUCTS.filter((p) => p.name.includes(q));       
+  const visible = PRODUCTS.filter((p) => p.name.toLowerCase().includes(q.toLowerCase()));       
   $('#product-grid').innerHTML = visible.map((p) => `
     <article class="card" data-testid="product" data-id="${p.id}">
       <h3>${p.name}</h3>
