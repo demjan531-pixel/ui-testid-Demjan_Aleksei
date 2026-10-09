@@ -47,7 +47,7 @@ function renderCart() {
     $('#cart-body').innerHTML = '<p class="empty" data-testid="cart-empty">Your cart is empty</p>';
     return;
   }
-  const total = rows.reduce((s, r) => s + r.p.price, 0);                
+  const total = rows.reduce((s, r) => s + r.p.price * r.qty, 0);                
   $('#cart-body').innerHTML = `
     <table aria-label="Cart items">
       <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Line total</th><th></th></tr></thead>
